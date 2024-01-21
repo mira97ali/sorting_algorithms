@@ -19,18 +19,14 @@ void bubble_sort(int *arr, size_t len)
 		{
 			if (arr[idx_inner] > arr[idx_inner + 1])
 			{
-				/* Swap elements if they are in the wrong order */
 				tmp = arr[idx_inner];
 				arr[idx_inner] = arr[idx_inner + 1];
 				arr[idx_inner + 1] = tmp;
 				did_swap = 1;
-
-				/* Display the array after each swap */
 				print_array(arr, len);
 			}
 		}
 
-		/* If no swapping happened, the array is already sorted */
 		if (did_swap == 0)
 			break;
 	}
