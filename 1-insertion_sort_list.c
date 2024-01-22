@@ -10,8 +10,10 @@ void insertion_sort_list(listint_t **list)
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	listint_t *current__node = (*list)->next;
+	listint_t *current__node;
 	listint_t *prev__node;
+
+	current__node = (*list)->next;
 
 	while (current__node != NULL)
 	{
