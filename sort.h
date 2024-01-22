@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <stddef.h>
 
 /**
  * struct listint_s - Doubly linked list node
@@ -24,5 +25,11 @@ void print_array(const int *array, size_t size);
 
 /** My Functions */
 void bubble_sort(int *arr, size_t len);
+
+/* Function to sort a doubly linked list using Insertion sort algorithm */
+void insertion_sort_list(listint_t **list);
+
+/* Function to print a doubly linked list */
+void print_list(const listint_t *list);
 
 #endif
