@@ -7,11 +7,11 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
-
 	listint_t *current__node;
 	listint_t *prev__node;
+
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
 
 	current__node = (*list)->next;
 
