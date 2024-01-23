@@ -3,6 +3,7 @@
 /**
  * insertion_sort_list - Performs ascending order on a doubly linked list
  * @list: Double pointer to the head of the doubly linked list
+ * Author: Amira.
  */
 
 void insertion_sort_list(listint_t **list)

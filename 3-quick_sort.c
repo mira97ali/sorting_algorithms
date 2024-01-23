@@ -4,6 +4,7 @@
  * custom_swap - Exchange two integers within an array.
  * @first_elem: The initial int for the exchange.
  * @second_elem: The subsequent int.
+ * Author: Amira.
  */
 
 void custom_swap(int *first_elem, int *second_elem)
@@ -24,6 +25,7 @@ void custom_swap(int *first_elem, int *second_elem)
  * @right_idx: The final index.
  *
  * Return: The ult partition index.
+ * Author: Amira.
  */
 
 int custom_partition(int *arr, size_t size, int left_idx, int right_idx)
@@ -61,6 +63,7 @@ int custom_partition(int *arr, size_t size, int left_idx, int right_idx)
  * @right_idx: The ending index of the array.
  *
  * Description: Utilizes a custom partition scheme.
+ * Author: Amira.
  */
 
 void custom_sort(int *arr, size_t size, int left_idx, int right_idx)
@@ -81,6 +84,7 @@ void custom_sort(int *arr, size_t size, int left_idx, int right_idx)
  * @size: The size of the array.
  *
  * Description: the array after each swap of two elements.
+ * Author: Amira.
  */
 
 void quick_sort(int *array, size_t size)
