@@ -1,78 +1,97 @@
 #include "sort.h"
 
+void custom_swap(int *first_elem, int *second_elem);
+int custom_partition(int *arr, size_t size, int left_idx, int right_idx);
+void custom_sort(int *arr, size_t size, int left_idx, int right_idx);
+void custom_quicksort(int *arr, size_t size);
+
 /**
- * swap - Swaps two ints in an array
- * @x: First int
- * @y: Second int
+ * swap_custom - Exchange two integers within an array.
+ * @first_element: The initial int for the exchange.
+ * @second_element: The subsequent int.
  */
 
-void swap(int *x, int *y)
+void custom_swap(int *first_elem, int *second_elem)
 {
-	int temp = *x;
-	*x = *y;
-	*y = temp;
+	int temp;
+
+	temp = *first_elem;
+	*first_elem = *second_elem;
+	*second_elem = temp;
 }
 
 /**
- * lomuto_partition - Lomuto partition scheme
- * @arr: Array to be partitioned
- * @low_idx: Starting ind of the partition
- * @high_idx: Ending ind of the partition
- * @arr_size: Size of the array
+ * custom_partition - Organize a segment of an integer array using a custom
+ *                     partition scheme (last element as pivot).
+ * @arr: The array of ints.
+ * @size: The size of the arr.
+ * @left_idx: The initial idx of the subset to order.
+ * @right_idx: The final index.
  *
- * Return: Index of the pivot
+ * Return: The ult partition index.
  */
 
-size_t lomuto_partition(
-	int *arr, ssize_t low_idx, ssize_t high_idx, size_t arr_size)
+int custom_partition(int *arr, size_t size, int left_idx, int right_idx)
 {
-	int pivot = arr[high_idx];
-	ssize_t i = low_idx - 1, j;
+	int *pivot, above, below;
 
-	for (j = low_idx; j <= high_idx - 1; j++)
+	pivot = arr + right_idx;
+	for (above = below = left_idx; below < right_idx; below++)
 	{
-		if (arr[j] < pivot)
+		if (arr[below] < *pivot)
 		{
-			i++;
-			swap(&arr[i], &arr[j]);
-			print_array(arr, arr_size);
+			if (above < below)
+			{
+				custom_swap(arr + below, arr + above);
+				print_array(arr, size);
+			}
+			above++;
 		}
 	}
-	swap(&arr[i + 1], &arr[high_idx]);
-	print_array(arr, arr_size);
 
-	return (i + 1);
+	if (arr[above] > *pivot)
+	{
+		custom_swap(arr + above, pivot);
+		print_array(arr, size);
+	}
+
+	return above;
 }
 
 /**
- * quicksort - perform Quick sort
- * @arr: Array to be sorted
- * @low_idx: Starting index of the partition
- * @high_idx: Ending index of the partition
- * @arr_size: Size of the array
+ * custom_sort - Implement a recursive sorting algorithm.
+ * @arr: An array of ints.
+ * @size: The size of the arr.
+ * @left_idx: The initial idx of the array.
+ * @right_idx: The ending index of the array.
+ *
+ * Description: Utilizes a custom partition scheme.
  */
 
-void quicksort(int *arr, ssize_t low_idx, ssize_t high_idx, size_t arr_size)
+void custom_sort(int *arr, size_t size, int left_idx, int right_idx)
 {
-	if (low_idx < high_idx)
-	{
-		ssize_t pi = lomuto_partition(arr, low_idx, high_idx, arr_size);
+	int part;
 
-		quicksort(arr, low_idx, pi - 1, arr_size);
-		quicksort(arr, pi + 1, high_idx, arr_size);
+	if (right_idx - left_idx > 0)
+	{
+		part = custom_partition(arr, size, left_idx, right_idx);
+		custom_sort(arr, size, left_idx, part - 1);
+		custom_sort(arr, size, part + 1, right_idx);
 	}
 }
 
 /**
- * quick_sort - Sorts an array of integers
- * @arr: Array to be sorted
- * @arr_size: Size of the array
+ * custom_quicksort - Arranges an array of integers.
+ * @arr: An array.
+ * @size: The size of the array.
+ *
+ * Description: the array after each swap of two elements.
  */
 
-void quick_sort(int *arr, size_t arr_size)
+void custom_quicksort(int *arr, size_t size)
 {
-	if (arr == NULL || arr_size < 2)
+	if (arr == NULL || size < 2)
 		return;
 
-	quicksort(arr, 0, arr_size - 1, arr_size);
+	custom_sort(arr, size, 0, size - 1);
 }
