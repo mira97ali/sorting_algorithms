@@ -1,14 +1,9 @@
 #include "sort.h"
 
-void custom_swap(int *first_elem, int *second_elem);
-int custom_partition(int *arr, size_t size, int left_idx, int right_idx);
-void custom_sort(int *arr, size_t size, int left_idx, int right_idx);
-void custom_quicksort(int *arr, size_t size);
-
 /**
- * swap_custom - Exchange two integers within an array.
- * @first_element: The initial int for the exchange.
- * @second_element: The subsequent int.
+ * custom_swap - Exchange two integers within an array.
+ * @first_elem: The initial int for the exchange.
+ * @second_elem: The subsequent int.
  */
 
 void custom_swap(int *first_elem, int *second_elem)
@@ -55,7 +50,7 @@ int custom_partition(int *arr, size_t size, int left_idx, int right_idx)
 		print_array(arr, size);
 	}
 
-	return above;
+	return (above);
 }
 
 /**
@@ -81,17 +76,17 @@ void custom_sort(int *arr, size_t size, int left_idx, int right_idx)
 }
 
 /**
- * custom_quicksort - Arranges an array of integers.
- * @arr: An array.
+ * quick_sort - Arranges an array of integers.
+ * @array: An array.
  * @size: The size of the array.
  *
  * Description: the array after each swap of two elements.
  */
 
-void custom_quicksort(int *arr, size_t size)
+void quick_sort(int *array, size_t size)
 {
-	if (arr == NULL || size < 2)
+	if (array == NULL || size < 2)
 		return;
 
-	custom_sort(arr, size, 0, size - 1);
+	custom_sort(array, size, 0, size - 1);
 }
